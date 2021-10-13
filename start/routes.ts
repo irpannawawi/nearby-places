@@ -24,7 +24,7 @@ Route.get('/', async () => {
   return { hello: 'world' }
 })
 
-Route.get('post', 'PostsController.index')
+Route.get('search', 'SearchController.index')
 // Route.get('addKategori', 'PostsController.addKategori')
 Route.post('tempat', 'PostsController.addTempat')
 Route.get('tempat', 'PostsController.addTempat')
