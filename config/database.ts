@@ -5,10 +5,8 @@
  * file.
  */
 
-
 import Env from '@ioc:Adonis/Core/Env'
 import { DatabaseConfig } from '@ioc:Adonis/Lucid/Database'
-import Application from '@ioc:Adonis/Core/Application'
 
 const databaseConfig: DatabaseConfig = {
   /*
@@ -21,7 +19,7 @@ const databaseConfig: DatabaseConfig = {
   | file.
   |
   */
-  connection: Application.inDev ? 'mysql' : 'pg',
+  connection: Env.get('DB_CONNECTION'),
 
   connections: {
     /*
