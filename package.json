@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "engines": {
-    "node": "14.16.1"
+    "node": "14.17.5"
   },
   "scripts": {
     "dev": "node ace serve --watch",
-    "build": "node ace build --prod --ignore-ts-error",
+    "build": "node ace build --prod --ignore-ts-errors",
     "start": "node ace serve --watch",
     "start:prod": "node ./build/server.js",
     "lint": "eslint . --ext=.ts",
