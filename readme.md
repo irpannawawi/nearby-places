@@ -8,6 +8,8 @@
 
 ### Link Video 
 
+### Link Dokumentasi
+[Dokumentasi](https://app.swaggerhub.com/apis-docs/NawawiSoft/SwaggerJDS2/1.1#/default/get_search)
 
 ### Generate data
 proses generate data dilakukan dengan menggunakan bahasa pemrogramman python. source code ada dalam folder generate-places/
