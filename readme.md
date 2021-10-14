@@ -1,4 +1,4 @@
-# Narby App API
+# Nearby App API
 ### Data diri :
 		Nama : Irpan Nawawi
 		Kelas : Backend NodeJs
