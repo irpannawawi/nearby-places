@@ -20,8 +20,30 @@ list_kategori = [
 	(8, "Tempat Ibadah"),
 	(9, "Kantor Pemerintah Kelurahan / Desa")
 ]
+# insert data wilayah
+endpoint_wilayah 	= 'https://data.jabarprov.go.id/api-backend/bigdata/diskominfo/od_kode_wilayah_dan_nama_wilayah_desa_kelurahan?limit=99999'
+reqWilayah = requests.get(endpoint_wilayah)
+list_wiayah = reqWilayah.json()['data']
 
 print('Starting...')
+print('Generating data wilayah...')
+for n in list_wiayah:
+	kemendagri_provinsi_kode = n['kemendagri_provinsi_kode']
+	kemendagri_kota_kode = n['kemendagri_kota_kode']
+	kemendagri_kecamatan_kode = n['kemendagri_kecamatan_kode']
+	kemendagri_kelurahan_kode = n['kemendagri_kelurahan_kode']
+	kemendagri_provinsi_nama = n['kemendagri_provinsi_nama']
+	kemendagri_kota_nama = n['kemendagri_kota_nama']
+	kemendagri_kecamatan_nama = n['kemendagri_kecamatan_nama']
+	kemendagri_kelurahan_nama = n['kemendagri_kelurahan_nama']
+	latitude = n['latitude']
+	longitude = n['longitude']
+	kode_pos = n['kode_pos']
+	dataWilayah = (kemendagri_provinsi_kode, kemendagri_kota_kode, kemendagri_kecamatan_kode, kemendagri_kelurahan_kode, kemendagri_provinsi_nama, kemendagri_kota_nama, kemendagri_kecamatan_nama, kemendagri_kelurahan_nama, latitude, longitude, kode_pos)
+	sql = "INSERT INTO wilayah(kemendagri_provinsi_kode, kemendagri_kota_kode, kemendagri_kecamatan_kode, kemendagri_kelurahan_kode, kemendagri_provinsi_nama, kemendagri_kota_nama, kemendagri_kecamatan_nama, kemendagri_kelurahan_nama, latitude, longitude, kode_pos ) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+	db.cursor().execute(sql, dataWilayah)
+print('Generating data wilayah... OK' )
+
 print('Generating kategori ..... ')
 curkategori = db.cursor(buffered=True)
 curkategori.executemany("INSERT INTO kategori(id_kategori, nama_kategori) VALUES(%s, %s)", list_kategori)
